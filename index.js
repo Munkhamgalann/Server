@@ -1,19 +1,19 @@
-import express from "express"
-import bodyParser from "body-parser"
-import mongoose from "mongoose"
-import cors from "cord"
-import dotenv from "dotenv"
-import multer from "multer"
-import helmet from "helmet"
-import morgan from "morgan"
-import path from "path"
-import { fileURLToPath } from "url"
-import e from "express"
+const express = require("express")
+const bodyParser =require("body-parser")
+const mongoose= require("mongoose")
+const cors =require("cors")
+const dotenv =require("dotenv")
+const multer =require("multer")
+const helmet =require("helmet")
+const morgan =require("morgan")
+const path= require("path")
+const { fileURLToPath } =require("url")
+const e =require("express")
 
 // Config //
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 dotenv.config();
 const app = express();
 app.use(express.json());
@@ -38,6 +38,7 @@ const upload = multer ({storage});
 
 // Mongoose setUp //
 const PORT = process.env.PORT || 6001;
+mongoose.set('strictQuery',false)
 mongoose
     .connect(process.env.MONGO_URL, {
         useNewUrlParser: true,
